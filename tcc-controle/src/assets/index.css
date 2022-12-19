@@ -1,0 +1,8 @@
+body {
+    background: rgb(144,221,239);
+    background: linear-gradient(180deg, rgba(144,221,239,1) 0%, rgba(0,212,255,1) 100%);;
+    background-attachment: fixed;
+    height: 960px;
+    width: auto;
+    margin: 0 0 0 0;
+}

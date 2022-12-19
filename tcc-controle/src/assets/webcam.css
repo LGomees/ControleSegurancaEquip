@@ -1,0 +1,56 @@
+.webcamSpace {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.webcamContainer {
+    margin-top: 3rem;
+    width: 640px;
+    height: 480px;
+    border: 1px solid black;
+}
+
+#divRunning {
+    align-items: center;
+    text-align: center;
+}
+
+#textGuide {
+    color: #2B676F;
+    text-align: center;
+    align-items: center;
+    margin-top: 5%;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+
+    -webkit-animation: textoWebcam 1.75s linear infinite;
+    -moz-animation: textoWebcam 1.75s linear infinite;
+    -ms-animation: textoWebcam 1.75s linear infinite;
+    -o-animation: textoWebcam 1.75s linear infinite;
+    animation: textoWebcam 1.75s linear infinite;
+}
+
+#textoWebcam {
+    color: #2B676F;
+    text-align: center;
+    align-items: center;
+    margin-top: 13%;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+
+    -webkit-animation: textoWebcam 2s linear infinite;
+    -moz-animation: textoWebcam 2s linear infinite;
+    -ms-animation: textoWebcam 2s linear infinite;
+    -o-animation: textoWebcam 2s linear infinite;
+    animation: textoWebcam 2s linear infinite;
+}
+
+@keyframes textoWebcam {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}

@@ -12,6 +12,17 @@
     border: 1px solid black;
 }
 
+.webcamContainer img {
+    position: absolute;
+    margin-top: 0;
+    width: 640px;
+    height: 480px;
+}
+
+#screenWebcam {
+    position: absolute;
+}
+
 #divRunning {
     align-items: center;
     text-align: center;

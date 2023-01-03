@@ -9,7 +9,18 @@ function App() {
   return ( 
     <body>
       <Header></Header>
-      <WebcamCapture></WebcamCapture>
+      {/* <WebcamCapture></WebcamCapture> */}
+      <div className='container'>
+        <div className='content'>
+          <p>Insira o nome da pessoa a ser analisada</p>
+          <form>
+            <input 
+              id='name' 
+              placeholder='Nome' ></input>
+            <button className='btn' type='submit'>Criar</button>
+          </form>
+        </div>
+      </div>
     </body>
     
   )

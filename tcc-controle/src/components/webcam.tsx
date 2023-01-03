@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import Webcam from 'react-webcam';
 import styled from "styled-components";
 
-const WebcamComponent = () => <Webcam />;
-
+import marcacaoRosto from '../marcacaoRosto.png'
 import ".././assets/webcam.css"
 
-export function WebcamCapture() {
+const WebcamComponent = () => <Webcam />;
 
-    
+export function WebcamCapture() {
 
     const [playing, setPlaying] = useState(false);
 
@@ -51,13 +50,18 @@ export function WebcamCapture() {
                 {playing ? (
                     <div>
                         <div className="webcamContainer">
-                            <Webcam />
+                            <div id="screenWebcam">
+                                <Webcam />
+                            </div>
+                            <div id="marcacaoRostoimg">
+                                <img src={marcacaoRosto}/>
+                            </div>
                         </div>
                         <div className="webcamButton">
                             {playing ? (
                                 <div id="divRunning">
                                     <p id="textGuide">Posicione seu rosto na marcação</p>
-                                    <Button onClick={tryAgainVideo}>
+                                    <Button onClick={tryAgainVideo}>    
                                         Tentar Novamente
                                     </Button>   
                                 </div>

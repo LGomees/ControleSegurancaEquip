@@ -4,8 +4,9 @@ module.exports = {
     async show(req,res) {
         const { user_id } = req.headers;
         const ativos = "";
+        const urgenteTag = "SIM";
 
-        const movements = await Movement.find({ user: user_id, responsibleDevolution: ativos });
+        const movements = await Movement.find({ user: user_id, responsibleDevolution: ativos, emergency: urgenteTag });
 
         return res.json(movements);
     },

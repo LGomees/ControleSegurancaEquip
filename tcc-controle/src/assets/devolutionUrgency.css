@@ -30,7 +30,27 @@ ul.movementUrgency-list li {
 
 ul.movementUrgency-list li span {
     font-weight: bold;
+    font-size: 25px;
     color: #2a2a2a;
     margin-top: 1px;
     margin-bottom: 10px;
+}
+
+#btnDevolution {
+    font-size: 20px;
+    height: auto;
+    padding: 15px;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+#btnDevolutionFinal {
+    font-size: 20px;
+    height: auto;
+    padding: 15px;
+    width: 50%;
+    margin-top: 35px;
+    margin-bottom: 15px;
 }

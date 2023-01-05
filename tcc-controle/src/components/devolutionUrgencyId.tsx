@@ -6,7 +6,7 @@ import "../assets/devolutionUrgency.css"
 import api from '../services/api'
 
 
-export function DevolutionUrgency() {
+export function DevolutionUrgencyId() {
     const [movement, setMovement] = useState<any[]>([]);
 
     useEffect(() => {   

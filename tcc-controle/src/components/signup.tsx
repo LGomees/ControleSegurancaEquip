@@ -16,12 +16,11 @@ export function SignUp() {
       const response = await api.post('/sessions', { name })
   
       const { _id } = response.data;
-  
+
       localStorage.setItem('user', _id);
+      localStorage.setItem('name', name);
 
-      console.log(name);
-
-      navigate("/"); // Quando cadastrar o funcionário, redireciona para a página X.
+      navigate("/movimentacao"); // Quando cadastrar o funcionário, redireciona para a página MOVIMENTACAO.
 
     }
 

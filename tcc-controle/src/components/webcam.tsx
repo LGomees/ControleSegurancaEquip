@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom'
 import Webcam from 'react-webcam';
 import styled from "styled-components";
 
@@ -18,6 +19,11 @@ export function WebcamCapture() {
     const tryAgainVideo = () => {
         setPlaying(false)
     };
+
+    const navigate = useNavigate();
+    function nextStep() {
+        navigate("/movimentacao");
+    }
 
     const Button = styled.button`
         background-color: #2B676F;
@@ -64,11 +70,16 @@ export function WebcamCapture() {
                                     <Button onClick={tryAgainVideo}>    
                                         Tentar Novamente
                                     </Button>   
+                                    <Button onClick={nextStep}>
+                                        Próxima Página
+                                    </Button>
                                 </div>
                             ) : (
-                                <Button onClick={tryAgainVideo}>
-                                    Tentar Novamente
-                                </Button>
+                                <div>
+                                    <Button onClick={tryAgainVideo}>
+                                        Tentar Novamente
+                                    </Button>
+                                </div>
                             )}
                         </div>
                     </div>

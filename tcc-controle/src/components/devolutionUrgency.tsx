@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import "../assets/index.css"
 import "../assets/devolutionUrgency.css"
@@ -8,6 +8,11 @@ import api from '../services/api'
 
 export function DevolutionUrgency() {
     const [movement, setMovement] = useState<any[]>([]);
+
+    const navigate = useNavigate();
+    function redirectToDetails(param: any) {
+        navigate(`/movimentacao/devolucaoUrgente/${param}`);
+    }
 
     useEffect(() => {   
         async function loadDevolutionsUrgency() {
@@ -37,6 +42,7 @@ export function DevolutionUrgency() {
                         <strong>Patrimônio: </strong><span>{movement.patrimony}</span>
                         <strong>Responsável pela Devolução: </strong><span style={{ color: movement.responsibleDevolution ? '#2a2a2a' : 'red' }}>{movement.responsibleDevolution ? movement.responsibleDevolution : 'AGUARDANDO DEVOLUÇÃO'}</span>
                         <strong>Data/Hora da Retirada:  </strong><span style={{ color: movement.responsibleDevolution ? '#2a2a2a' : 'red' }}>{movement.dateHourDevolution ? movement.responsibleDevolution : 'AGUARDANDO DEVOLUÇÃO'}</span>
+                        <Link to={`/movimentacao/devolucaoUrgente/${movement._id}`}><button className='btn' id='btnDevolution'>Realizar Devolução</button></Link>
                     </li>
                 ))}
                 </ul>

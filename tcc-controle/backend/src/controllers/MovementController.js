@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 module.exports = {
     
-    // DEVOLUÇÃO: Listar todas as retiradas que não são urgentes, independente do usuário
+    // DEVOLUÇÃO NÃO URGENTE: Listar todas as retiradas que não são urgentes, independente do usuário
     async index(req,res) {
 
         const ativos = "";
@@ -14,7 +14,7 @@ module.exports = {
         return res.json(movements);
     },
 
-    // DEVOLUÇÃO: Listar a retirada específica que não é urgente.
+    // DEVOLUÇÃO NÃO URGENTE: Listar a retirada específica que não é urgente.
     async indexI(req,res) {
 
         const { _id } = req.headers;
@@ -23,7 +23,7 @@ module.exports = {
         return res.json(movements);
     },
 
-    // DEVOLUÇÃO: Atualizar registro com o nome da pessoa que está devolvendo e data/hora da devolução.
+    // DEVOLUÇÃO NÃO URGENTE: Atualizar registro com o nome da pessoa que está devolvendo e data/hora da devolução.
     async update(req,res) {
 
         const { _id, user_name } = req.headers;
@@ -37,7 +37,7 @@ module.exports = {
         return res.json(movement);
     },
 
-    // RETIRADA: Rota para criar uma RETIRADA URGENTE, definindo emergency="SIM"
+    // RETIRADA URGENTE: Rota para criar uma RETIRADA URGENTE, definindo emergency="SIM"
     async storeU(req,res) {
         const { 
             equipament,
@@ -71,7 +71,7 @@ module.exports = {
 
 
 
-    // RETIRADA: Rota para criar uma RETIRADA NÃO URGENTE, definindo emergency="NÃO"
+    // RETIRADA NÃO URGENTE: Rota para criar uma RETIRADA NÃO URGENTE, definindo emergency="NÃO"
     async store(req,res) {
         const { 
             equipament,

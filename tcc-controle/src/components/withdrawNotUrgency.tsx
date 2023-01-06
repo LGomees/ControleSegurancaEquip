@@ -34,7 +34,7 @@ export function  WithdrawNotUrgency() {
           }, {   
             headers: { user_id, user_name }
         });
-        console.log(response.data);
+
       navigate("/movimentacao/retiradaNaoUrgente"); // Quando registrar a retirada, redireciona para a página de FINALIZAÇÃO.
 
     }

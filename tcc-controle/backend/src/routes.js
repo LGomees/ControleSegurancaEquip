@@ -21,9 +21,15 @@ routes.get('/movimentacao/devolucaoNaoUrgente', MovementController.index);
 routes.get('/movimentacao/devolucaoNaoUrgenteId/', MovementController.indexI);
 
 // MOVEMENT - Rota para atualizar retiradas ESPECÍFICAS com sua devolução e sem caso de urgência
-routes.put('/movimentacao/finalizaDevolucao', MovementController.update);
+routes.put('/movimentacao/finalizaDevolucaoNaoUrgente', MovementController.update);
 
 // DASHBOARD - Rota para listar retiradas em caso de urgência (listar apenas retiradas feitas pela própria pessoa)
 routes.get('/movimentacao/devolucaoUrgente', DashboardController.show);
+
+// DASHBOARD - Rota para listar retiradas ESPECÍFICAS sem devolução e COM caso de urgência
+routes.get('/movimentacao/devolucaoUrgenteId/', DashboardController.indexI);
+
+// DASHBOARD - Rota para atualizar retiradas ESPECÍFICAS com sua devolução e COM caso de urgência
+routes.put('/movimentacao/finalizaDevolucaoUrgente', DashboardController.update);
 
 module.exports = routes;

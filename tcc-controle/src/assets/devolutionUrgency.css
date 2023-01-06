@@ -54,3 +54,13 @@ ul.movementUrgency-list li span {
     margin-top: 35px;
     margin-bottom: 15px;
 }
+
+#btnDevolutionFinalUrgente {
+    font-size: 20px;
+    height: auto;
+    padding: 15px;
+    margin-left: 22%;
+    width: 50%;
+    margin-top: 35px;
+    margin-bottom: 15px;
+}

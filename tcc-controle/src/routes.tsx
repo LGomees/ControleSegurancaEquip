@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //Roda funcionamento Webcam
-import { Login } from './components/login';
+import { Home } from './components/home';
 
 //Conectar identificação do rosto com pessoa cadastrada (ATUALMENTE)
 import { SignUp } from './components/signup';
@@ -27,7 +27,7 @@ export function RoutesFront() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Login/>}></Route>
+                <Route path='/' element={<Home/>}></Route>
                 <Route path='/cadastrar' element={<SignUp/>}></Route>
                 <Route path='/movimentacao' element={<AskWorD/>}></Route>
                 <Route path='/movimentacao/retirada' element={<AskWithdrawUrg/>}></Route>

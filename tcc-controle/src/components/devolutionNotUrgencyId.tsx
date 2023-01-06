@@ -21,7 +21,6 @@ export function DevolutionNotUrgencyId() {
                 headers: { _id: _id } 
             });
             setMovement(response.data);
-            console.log(movement)
         }
 
         loadDevolutionsNotUrgency();
@@ -29,12 +28,14 @@ export function DevolutionNotUrgencyId() {
     }, [])
 
     async function updateDevolution() {
-        const response = await api.put('/movimentacao/finalizaDevolucao', {
+        const response = await api.put('/movimentacao/finalizaDevolucaoNaoUrgente', {
             dateHourDevolution
         },
-        { headers: { _id, user_name  } 
+        { 
+            headers: { _id, user_name  } 
         });
 
+        window.location.reload(false);
     }
 
     const navigate = useNavigate();

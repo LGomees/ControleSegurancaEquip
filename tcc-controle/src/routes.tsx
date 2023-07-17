@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //Roda funcionamento Webcam
@@ -21,7 +21,6 @@ import { DevolutionUrgency } from './components/devolutionUrgency';
 import { DevolutionUrgencyId } from './components/devolutionUrgencyId';
 import { DevolutionNotUrgency } from './components/devolutionNotUrgency';
 import { DevolutionNotUrgencyId } from './components/devolutionNotUrgencyId';
-
 
 export function RoutesFront() {
     return (

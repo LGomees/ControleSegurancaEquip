@@ -8,6 +8,12 @@ const routes = express.Router();
 // SESSION - Rota para criar usuário novo
 routes.post('/sessions', SessionController.store);
 
+// SESSION - Rota para reconhecimento facial
+routes.post('/facialDetection', SessionController.pythonExecFacial);
+
+// SESSION - Rota para reconhecimento de objetos
+routes.post('/objectDetection', SessionController.pythonExecObject);
+
 // MOVEMENT - Rota para criar retirada de equipamento
 routes.post('/movimentacao/retiradaUrgente', MovementController.storeU);
 

@@ -1,29 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
-import Webcam from 'react-webcam';
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 
-import marcacaoRosto from '../marcacaoRosto.png'
-import ".././assets/webcam.css"
-
-const WebcamComponent = () => <Webcam />;
+import ".././assets/webcam.css";
+import api from "../services/api.js";
 
 export function WebcamCapture() {
-
     const [playing, setPlaying] = useState(false);
-
-    const startVideo = () => {
-        setPlaying(true)
-    };
-
-    const tryAgainVideo = () => {
-        setPlaying(false)
-    };
-
+    const [userFacial, setUserFacial] = useState('');
+    const [notSignUp, setNotSignUp] = useState(true);
+    
     const navigate = useNavigate();
-    function nextStep() {
-        navigate("/movimentacao");
-    }
 
     const Button = styled.button`
         background-color: #2B676F;
@@ -39,55 +26,79 @@ export function WebcamCapture() {
             background-color: #317079;
             opacity: 0.9;
             cursor: pointer;
+        }
     `;
 
-    useEffect(() => {
-        document.addEventListener('keydown',detectKeyPress, true)
-    }, [])
+    const startVideo = () => {
+        setPlaying(true);
+    };
 
-    const detectKeyPress = (e: { key: any; }) => {
-        if (e.key === "Enter") {
-            startVideo()
+    const goAheadLogged = () => {
+        setNotSignUp(false);
+    };
+
+    const executeFacialRec = async () => {
+        const response = await api.post('/facialDetection');
+        if (response.data == 'JULIE') {
+            const name = 'Julie Delchova'
+            setUserFacial(name);
+            localStorage.setItem('name', name);
+        } else if (response.data == 'LUCAS') {
+            const name = 'Lucas Gomes'
+            setUserFacial(name);
+            localStorage.setItem('name', name);
+        } else {
+            setUserFacial(response.data);
+            localStorage.setItem('name', response.data);
         }
-    }
+    };
+
+    const loginWithFacialRecognition = async () => {
+        const response = await api.post('/sessions', userFacial);
+        const { _id } = response.data;
+
+        localStorage.setItem('user', _id);
+        localStorage.setItem('name', userFacial);
+        console.log('----- ESSE NOME FOI ARMAZENADO');
+
+        navigate("/movimentacao"); // Quando cadastrar o funcionário, redireciona para a página MOVIMENTACAO.
+    };
+
+    useEffect(() => {
+        document.addEventListener('keydown', detectKeyPress, true);
+    }, []);
+
+    const detectKeyPress = (e) => {
+        if (e.key === "Enter") {
+            startVideo();
+            executeFacialRec();
+        }
+        if (e.key === "q" || e.key === "Q" ) {
+            goAheadLogged();
+        }
+    };
 
     return (
         <div className="webcamSpace">
-                {playing ? (
-                    <div>
-                        <div className="webcamContainer">
-                            <div id="screenWebcam">
-                                <Webcam />
+            {playing ? (
+                <div>
+                    <div className="webcamButton">
+                        {notSignUp ? (
+                            <div id="divRunning">
+                                <p id="textGuide">Posicione seu rosto na marcação. Após a leitura, pressione 'q' para continuar</p>   
                             </div>
-                            <div id="marcacaoRostoimg">
-                                <img src={marcacaoRosto}/>
+                        ) : (
+                            <div>
+                                <Button onClick={loginWithFacialRecognition}>
+                                    Continuar
+                                </Button>
                             </div>
-                        </div>
-                        <div className="webcamButton">
-                            {playing ? (
-                                <div id="divRunning">
-                                    <p id="textGuide">Posicione seu rosto na marcação</p>
-                                    <Button onClick={tryAgainVideo}>    
-                                        Tentar Novamente
-                                    </Button>   
-                                    <Button onClick={nextStep}>
-                                        Próxima Página
-                                    </Button>
-                                </div>
-                            ) : (
-                                <div>
-                                    <Button onClick={tryAgainVideo}>
-                                        Tentar Novamente
-                                    </Button>
-                                </div>
-                            )}
-                        </div>
+                        )}
                     </div>
-                ) : (
-                    <p id="textoWebcam">Pressione ENTER para começar a verificação.</p>
-                    
-                )}  
-            
+                </div>
+            ) : (
+                <p id="textoWebcam">Pressione ENTER para começar a verificação.</p>   
+            )}  
         </div>
     );
 }

@@ -7,11 +7,12 @@ import  { RoutesFront }  from './routes'
 function App() {
 
   return ( 
+    <>
     <body>
       <Header></Header>
       <RoutesFront></RoutesFront>
     </body>
-    
+    </>
   )
 }
 

@@ -54,7 +54,7 @@ export function WebcamCapture() {
     };
 
     const loginWithFacialRecognition = async () => {
-        const response = await api.post('/sessions', userFacial);
+        const response = await api.post('/sessions', { name: userFacial });
         const { _id } = response.data;
 
         localStorage.setItem('user', _id);
@@ -85,7 +85,7 @@ export function WebcamCapture() {
                     <div className="webcamButton">
                         {notSignUp ? (
                             <div id="divRunning">
-                                <p id="textGuide">Posicione seu rosto na marcação. Após a leitura, pressione 'q' para continuar</p>   
+                                <p id="textGuide">Posicione seu rosto na marcação. Após a leitura, pressione a tecla 'Q' para continuar</p>   
                             </div>
                         ) : (
                             <div>

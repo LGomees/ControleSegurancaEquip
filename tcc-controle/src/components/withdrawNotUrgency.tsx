@@ -39,7 +39,7 @@ export function  WithdrawNotUrgency() {
             headers: { user_id, user_name }
         });
 
-      navigate("/"); // Quando registrar a retirada, redireciona para a página de FINALIZAÇÃO.
+      navigate("/finalizado"); // Quando registrar a retirada, redireciona para a página de FINALIZAÇÃO.
 
     }
 
@@ -64,7 +64,7 @@ export function  WithdrawNotUrgency() {
     }, []);
 
     const detectKeyPress = (e) => {
-        if (e.key === "Enter") {
+        if (e.key === "e" || e.key === "E" ) {
             executeObjRec()
             setStartDetection(true)
         }
@@ -88,18 +88,18 @@ export function  WithdrawNotUrgency() {
                                                     value={patrimony}
                                                     onChange={event => setPatrimony(event?.target.value)}
                                                     ></input>
-                                                <button className='btn'>Finalizar Retirada</button>
+                                                <button className='btn'>Finalizar Retirada Não Urgente</button>
                                         </form>
                                     </div>
                                 ) : (
                                     <div id="divRunning">
-                                        <p id="textGuide">Posicione o equipamento na câmera. Após a leitura, pressione 'q' para continuar</p>   
+                                        <p id="textGuide">Posicione o equipamento na câmera. Após a leitura, pressione a tecla 'Q' para continuar</p>   
                                     </div>
                                 )}
                     </div>
                 </div>  
                 ) : (
-                <p id="textoWebcam">Pressione ENTER para começar a verificação do equipamento.</p>   
+                <p id="textoWebcam">Pressione 'E' para começar a verificação do equipamento.</p>   
             )}  
         </div>
     );

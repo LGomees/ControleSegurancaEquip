@@ -22,6 +22,9 @@ import { DevolutionUrgencyId } from './components/devolutionUrgencyId';
 import { DevolutionNotUrgency } from './components/devolutionNotUrgency';
 import { DevolutionNotUrgencyId } from './components/devolutionNotUrgencyId';
 
+//Finalização
+import { Finish } from './components/finish';
+
 export function RoutesFront() {
     return (
         <BrowserRouter>
@@ -37,6 +40,7 @@ export function RoutesFront() {
                 <Route path='/movimentacao/devolucaoUrgente/:_id' element={<DevolutionUrgencyId/>}></Route>
                 <Route path='/movimentacao/devolucaoNaoUrgente' element={<DevolutionNotUrgency/>}></Route>
                 <Route path='/movimentacao/devolucaoNaoUrgente/:_id' element={<DevolutionNotUrgencyId/>}></Route>
+                <Route path='/finalizado' element={<Finish/>}></Route>
             </Routes>
         </BrowserRouter>
     );

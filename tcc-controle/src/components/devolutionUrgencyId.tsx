@@ -48,8 +48,7 @@ export function DevolutionUrgencyId() {
             headers: { _id, user_name  } 
         });
         
-        setAlreadyUpdated(true)
-        window.location.reload(false);
+        navigate("/finalizado");
     }
 
     const navigate = useNavigate();
@@ -64,7 +63,7 @@ export function DevolutionUrgencyId() {
     }, []);
 
     const detectKeyPress = (e) => {
-        if (e.key === "Enter") {
+        if (e.key === "e" || e.key === "E") {
             executeObjRec()
             setStartDetection(true)
         }
@@ -76,13 +75,14 @@ export function DevolutionUrgencyId() {
 
     const executeObjRec = async () => {
         const response = await api.post('/objectDetection');
-        if (response.data == 'MUG' && 'Caneca' == movement.equipament) {
+        const equipamentName = movement.equipament
+        if (response.data == 'MUG' && 'Caneca' == equipamentName) {
             const obj = 'Caneca'
             setObjectDetected(obj);
-        } else if (response.data == 'GLASSES' && 'Óculos' == movement.equipament) {
+        } else if (response.data == 'GLASSES' && 'Óculos' == equipamentName) {
             const obj = 'Óculos'
             setObjectDetected(obj);
-        } else if (response.data == 'HEADSET' && 'Fone de Ouvido'== movement.equipament){
+        } else if (response.data == 'HEADSET' && 'Fone de Ouvido'== equipamentName){
             const obj = 'Fones de Ouvido'
             setObjectDetected(obj);
         } else {
@@ -183,12 +183,12 @@ export function DevolutionUrgencyId() {
                                     </div>
                                 ) : (
                                     <div id="divRunning">
-                                        <p id="textGuide">Posicione o equipamento na câmera. Após a leitura, pressione 'q' para continuar</p>   
+                                        <p id="textGuide">Posicione o equipamento na câmera. Após a leitura, pressione a tecla 'Q' para continuar</p>    
                                     </div>
                                 )}
                             </div>
                         ) : (
-                            <p id="textoWebcam">Pressione ENTER para começar a verificação do equipamento.</p>   
+                            <p id="textoWebcam">Pressione 'E' para começar a verificação do equipamento.</p>   
                         )}
                     </div>
                 )}

@@ -68,5 +68,8 @@ while cap.isOpened():
         cap.release()
         cv2.destroyAllWindows()
         break
-
+    
+cap = ""
+sys.modules.clear()
+sys.path.clear()
 sys.stdout.close()

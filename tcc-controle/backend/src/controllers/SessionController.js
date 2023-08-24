@@ -8,27 +8,29 @@ const path = require('path');
 module.exports = {
 
     async pythonExecFacial(req, res) {
-        const scriptPath = 'C:/Users/lgome/OneDrive/Área de Trabalho/TCC/ControleSegurancaEquip/tcc-controle/backend/src/controllers/modelo_facial.py';
+        const scriptPathFacial = 'C:/Users/lgome/OneDrive/Área de Trabalho/TCC/ControleSegurancaEquip/tcc-controle/backend/src/controllers/modelo_facial_2.py';
       
-        const pythonProcess = spawn('python', [scriptPath]);
+        const pythonProcessFacial = spawn('python', [scriptPathFacial]);
       
-        const filePath = path.join(__dirname, '..', '..', 'output.txt');
+        const filePathFacial = path.join(__dirname, '..', '..', 'output.txt');
       
-        pythonProcess.stdout.on('data', (data) => {
+        pythonProcessFacial.stdout.on('data', (data) => {
           const output = data.toString().trim();
         });
       
-        pythonProcess.stderr.on('data', (data) => {
+        pythonProcessFacial.stderr.on('data', (data) => {
           console.error(data.toString());
         });
 
-        pythonProcess.on('close', (code) => {
+        pythonProcessFacial.on('close', (code) => {
+            pythonProcessFacial.removeAllListeners();
+            pythonProcessFacial.kill();
             if (code === 0) {
-                const fileContent = fs.readFileSync(filePath, 'utf8');
-                const lines = fileContent.trim().split('\n');
-                const lastLine = lines[lines.length - 1];
+                const fileContentFacial = fs.readFileSync(filePathFacial, 'utf8');
+                const lines_facial = fileContentFacial.trim().split('\n');
+                const lastLine_facial = lines_facial[0].trim();
     
-                res.json(lastLine);
+                res.json(lastLine_facial);
             } else {
                 res.status(500).json({ error: 'Ocorreu um erro ao executar o script Python.' });
             }
@@ -37,27 +39,29 @@ module.exports = {
     },
 
     async pythonExecObject(req, res) {
-        const scriptPath = 'C:/Users/lgome/OneDrive/Área de Trabalho/TCC/ControleSegurancaEquip/tcc-controle/backend/src/controllers/modelo_objetos.py';
+        const scriptPathObjects = 'C:/Users/lgome/OneDrive/Área de Trabalho/TCC/ControleSegurancaEquip/tcc-controle/backend/src/controllers/modelo_objetos.py';
       
-        const pythonProcess = spawn('python', [scriptPath]);
+        const pythonProcessObjects = spawn('python', [scriptPathObjects]);
       
-        const filePath = path.join(__dirname, '..', '..', 'output2.txt');
+        const filePathObjects = path.join(__dirname, '..', '..', 'output2.txt');
       
-        pythonProcess.stdout.on('data', (data) => {
+        pythonProcessObjects.stdout.on('data', (data) => {
           const output = data.toString().trim();
         });
       
-        pythonProcess.stderr.on('data', (data) => {
+        pythonProcessObjects.stderr.on('data', (data) => {
           console.error(data.toString());
         });
 
-        pythonProcess.on('close', (code) => {
+        pythonProcessObjects.on('close', (code) => {
+            pythonProcessObjects.removeAllListeners();
+            pythonProcessObjects.kill();
             if (code === 0) {
-                const fileContent = fs.readFileSync(filePath, 'utf8');
-                const lines = fileContent.trim().split('\n');
-                const lastLine = lines[lines.length - 1];
+                const fileContentObjects = fs.readFileSync(filePathObjects, 'utf8');
+                const lines_objects = fileContentObjects.trim().split('\n');
+                const lastLine_objects = lines_objects[0].trim();
     
-                res.json(lastLine);
+                res.json(lastLine_objects);
             } else {
                 res.status(500).json({ error: 'Ocorreu um erro ao executar o script Python.' });
             }

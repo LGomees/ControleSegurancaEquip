@@ -28,7 +28,7 @@ export function DevolutionNotUrgency() {
     return (
         <div className='container'>
             <p id='textDevolution'>Selecione o equipamento que deseja devolver:</p>
-            <div className='content' id='content-list'>
+            <div className='content' id='content-list-2'>
                 <ul className='movementUrgency-list'>
                 {movement.map(movement => (
                     <li key={movement._id} id="liDevolution">

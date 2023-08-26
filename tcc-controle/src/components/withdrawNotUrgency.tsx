@@ -51,7 +51,7 @@ export function  WithdrawNotUrgency() {
         } else if (response.data == 'GLASSES') {
             const obj = 'Óculos'
             setObjectDetected(obj);
-        } else if (response.data == 'HEADSET'){
+        } else if (response.data == 'HEADPHONES'){
             const obj = 'Fones de Ouvido'
             setObjectDetected(obj);
         } else {

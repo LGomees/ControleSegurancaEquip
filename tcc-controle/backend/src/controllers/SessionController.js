@@ -60,7 +60,8 @@ module.exports = {
                 const fileContentObjects = fs.readFileSync(filePathObjects, 'utf8');
                 const lines_objects = fileContentObjects.trim().split('\n');
                 const lastLine_objects = lines_objects[0].trim();
-    
+                console.log("SAINDO DO MODELO ========")
+                console.log(lastLine_objects)
                 res.json(lastLine_objects);
             } else {
                 res.status(500).json({ error: 'Ocorreu um erro ao executar o script Python.' });

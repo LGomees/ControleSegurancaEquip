@@ -72,17 +72,16 @@ export function DevolutionUrgencyId() {
         }
     };
 
-
     const executeObjRec = async () => {
+        const equip = localStorage.getItem('equip'); 
         const response = await api.post('/objectDetection');
-        const equipamentName = movement.equipament
-        if (response.data == 'MUG' && 'Caneca' == equipamentName) {
+        if (response.data == 'MUG' && 'Caneca' == equip) {
             const obj = 'Caneca'
             setObjectDetected(obj);
-        } else if (response.data == 'GLASSES' && 'Óculos' == equipamentName) {
+        } else if (response.data == 'GLASSES' && 'Óculos' == equip) {
             const obj = 'Óculos'
             setObjectDetected(obj);
-        } else if (response.data == 'HEADSET' && 'Fone de Ouvido'== equipamentName){
+        } else if (response.data == 'HEADPHONES' && 'Fones de Ouvido'== equip){
             const obj = 'Fones de Ouvido'
             setObjectDetected(obj);
         } else {
@@ -175,7 +174,7 @@ export function DevolutionUrgencyId() {
                                                         <p id="textDevolution">Equipamento {objectDetected} não é o mesmo da retirada. Favor reiniciar a movimentação.</p>   
                                                     </div>
                                                     <button className='btn' id='btnDevolutionFinal' style={{ backgroundColor: movement.responsibleDevolution ? '#35ad47' : '#2B676F'  }} onClick={finishDevolution}>
-                                                            Finalizar Devolução
+                                                            Voltar para Início
                                                     </button>
                                                 </>
 

@@ -59,6 +59,5 @@ while cap.isOpened():
         sys.modules.clear()
         sys.path.clear()
         sys.stdout.close()
-        cap=""
         break
 

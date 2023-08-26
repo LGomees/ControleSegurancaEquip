@@ -25,6 +25,10 @@ export function DevolutionNotUrgency() {
 
     }, [])
 
+    const saveEquipament = (equip: string) => {
+        localStorage.setItem('equip', equip);
+    };
+
     return (
         <div className='container'>
             <p id='textDevolution'>Selecione o equipamento que deseja devolver:</p>
@@ -39,7 +43,7 @@ export function DevolutionNotUrgency() {
                         <strong>Patrimônio: </strong><span>{movement.patrimony}</span>
                         <strong>Responsável pela Devolução: </strong><span style={{ color: movement.responsibleDevolution ? '#2a2a2a' : 'red' }}>{movement.responsibleDevolution ? movement.responsibleDevolution : 'AGUARDANDO DEVOLUÇÃO'}</span>
                         <strong>Data/Hora da Retirada:  </strong><span style={{ color: movement.dateHourDevolution ? '#2a2a2a' : 'red' }}>{movement.dateHourDevolution ? movement.dateHourDevolution : 'AGUARDANDO DEVOLUÇÃO'}</span>
-                        <Link to={`/movimentacao/devolucaoNaoUrgente/${movement._id}`}><button className='btn' id='btnDevolution'>Realizar Devolução</button></Link>
+                        <Link to={`/movimentacao/devolucaoNaoUrgente/${movement._id}`}><button className='btn' id='btnDevolution' onClick={() => saveEquipament(movement.equipament)}>Realizar Devolução</button></Link>
                     </li>
                 ))}
                 </ul>
